@@ -1,18 +1,23 @@
-nframes = 43;
-nseconds = 1.76;
-for (i = 0; i <= nframes; i++)
-  frames_buffer[i] = Image("scp-" + i + ".png");
-video = Sprite();
-#Place in the center (useful if image is not scaled at Window resolution)
-video.SetX(Window.GetWidth() / 2 - frames_buffer[1].GetWidth() / 2);
-video.SetY(Window.GetHeight() / 2 - frames_buffer[1].GetHeight() / 2);
-progress = 1;
-frame = null;
-fun refresh_callback (){
-    if(Math.Int(progress)<=nframes){
-       frame = frames_buffer[Math.Int(progress)];
-       progress = progress + ((nframes/nseconds)/50) ;
-    }
-    video.SetImage(frame);
-  }
-Plymouth.SetRefreshFunction (refresh_callback);
+# I don't know how most of this works I'm just trying my hardest.
+
+#Define sheisse for the logo
+logo.image = Image("scp-0.png");
+logo.x = Window.GetWidth() / 2 - logo.image.GetWidth() / 2;
+logo.y = Window.GetHeight() / 2 - logo.image.GetHeight() / 2;
+logo.tick = 0;
+logo.sprite = Sprite(logo.image);
+logo.sprite.SetPosition(logo.x, logo.y, 0);
+
+#I think this is some sort of loop?
+fun refresh(){
+	#This is the part that animates it all
+	frameNo = (logo.tick++);
+	logo.sprite.SetImage(Image("scp-" + frameNo + ".png"));
+	logo.sprite.SetOpacity(1);
+	if(frameNo >= 43){
+		frameNo = 0;
+		logo.tick = 0;
+	}
+}
+#I have no clue what this actually does but I saw that other people have it in their theme scripts so I'm just gonna leave it here just in case something breaks if I remove it
+Plymouth.SetRefreshFunction(refresh); 
