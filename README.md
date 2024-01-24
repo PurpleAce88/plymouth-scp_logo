@@ -6,6 +6,7 @@ Installation:
 1. Install Plymouth
 2. cd /usr/share/plymouth/themes
 3. git clone https://github.com/PurpleAce88/plymouth-scp_logo/
-4. plymouth-set-default-theme -R scp_logo
+4. mv /usr/share/plymouth/themes/plymouth-scp_logo /usr/share/plymouth/themes/scp_logo
+5. plymouth-set-default-theme -R scp_logo
 
 Secure. Contain. Protect.
