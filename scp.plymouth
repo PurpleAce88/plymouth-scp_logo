@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=scp
+Description=rotating scp logo
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/scp
+ScriptFile=/usr/share/plymouth/themes/scp/script.script
